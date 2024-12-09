@@ -19,13 +19,19 @@
         <servlet-api.version>4.0.1</servlet-api.version>
         <javaee-api.version>8.0.1</javaee-api.version>
         <weld-servlet.version>3.1.9.Final</weld-servlet.version>
+        <security-ee.version>1.0</security-ee.version>
+        <ejb-api.version>3.0</ejb-api.version>
 
         <persistence-api.version>2.2</persistence-api.version>
         <hibernate.version>5.6.15.Final</hibernate.version>
         <h2.version>2.2.224</h2.version>
 
+        <jjwt.version>0.12.6</jjwt.version>
+        <spring-crypto.version>5.3.13.RELEASE</spring-crypto.version>
+
         <junit.version>5.10.2</junit.version>
         <war-plugin.version>3.4.0</war-plugin.version>
+        <common-logging.version>1.3.4</common-logging.version>
     </properties>
 
     <dependencies>
@@ -41,11 +47,50 @@
             <version>${servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.ejb</groupId>
+            <artifactId>ejb-api</artifactId>
+            <version>${ejb-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
         <!-- to enable CDI -->
         <dependency>
             <groupId>org.jboss.weld.servlet</groupId>
             <artifactId>weld-servlet-shaded</artifactId>
             <version>${weld-servlet.version}</version>
+        </dependency>
+
+        <!-- security -->
+        <dependency>
+            <groupId>javax.security.enterprise</groupId>
+            <artifactId>javax.security.enterprise-api</artifactId>
+            <version>${security-ee.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
+            <version>${spring-crypto.version}</version>
         </dependency>
 
         <!-- orm -->
@@ -77,6 +122,13 @@
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- log -->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>${common-logging.version}</version>
         </dependency>
     </dependencies>
 

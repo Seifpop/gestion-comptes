@@ -9,6 +9,7 @@
 
         <class>com.formation.jee.models.Account</class>
         <class>com.formation.jee.models.Operation</class>
+        <class>com.formation.jee.models.User</class>
 
         <properties>
             <!-- Provider-specific connection properties -->

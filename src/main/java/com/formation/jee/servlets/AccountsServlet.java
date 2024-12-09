@@ -17,6 +17,11 @@ public class AccountsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (!req.isUserInRole("accounts.read")) {
+            resp.sendError(HttpServletResponse.SC_FORBIDDEN, "You do not have permission to access this resource.");
+            return;
+        }
+
         req.setAttribute("accounts", accountService.getAccounts());
         req.getRequestDispatcher("/accounts.jsp").forward(req, resp);
     }

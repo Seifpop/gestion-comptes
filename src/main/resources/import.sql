@@ -12,3 +12,7 @@ INSERT INTO operation (id, amount, description, date, account_number) VALUES (ne
 
 INSERT INTO operation (id, amount, description, date, account_number) VALUES (nextval ('hibernate_sequence'), -50, 'Retrait', '2024-12-03', 'E001');
 INSERT INTO operation (id, amount, description, date, account_number) VALUES (nextval ('hibernate_sequence'), -30.0, 'Achat en magasin', '2024-12-02', 'E002');
+
+-- roles
+INSERT INTO ROLE(name) VALUES('accounts.read');
+INSERT INTO ROLE(name) VALUES('accounts.write');

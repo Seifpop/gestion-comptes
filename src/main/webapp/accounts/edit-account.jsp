@@ -5,6 +5,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
+    if (!request.isUserInRole("accounts.write")) {
+        response.sendError(HttpServletResponse.SC_FORBIDDEN, "You do not have permission to access this resource.");
+        return;
+    }
+
     String verb = request.getMethod();
     AccountService accountService = resolve(AccountService.class);
     assert accountService != null : "Account service is necessary for accessing the database.";
